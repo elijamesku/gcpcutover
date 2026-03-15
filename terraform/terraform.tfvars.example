@@ -1,0 +1,14 @@
+# Copy this file to terraform.tfvars and fill in values.
+# terraform.tfvars is typically in .gitignore so secrets are not committed.
+
+project_id     = "platinum-490018"
+region         = "us-central1"
+bucket_prefix  = "platinum-490018-migration"   # globally unique; adjust if taken
+
+# Optional: on-prem VPN gateway public IP (placeholder 203.0.113.1 = docs-only)
+on_prem_vpn_peer_ip = "203.0.113.1"
+
+# Migration targets
+enable_compute = false   # set true for lift-and-shift demo VM
+enable_cloud_sql = true # set false to skip Cloud SQL (saves cost)
+gke_node_count   = 1

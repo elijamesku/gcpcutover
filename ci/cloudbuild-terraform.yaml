@@ -1,0 +1,49 @@
+# =============================================================================
+# Cloud Build — Terraform plan and apply for migration infrastructure
+# =============================================================================
+# Use with: gcloud builds submit --config=ci/cloudbuild-terraform.yaml .
+# For apply, use a trigger with substitution _TERRAFORM_ACTION=apply and
+# manual approval or branch protection.
+# =============================================================================
+
+substitutions:
+  _TERRAFORM_ACTION: 'plan'
+  _TERRAFORM_VERSION: '1.5.0'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+steps:
+  # Install Terraform
+  - name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
+    id: 'terraform-init'
+    entrypoint: 'terraform'
+    args: ['init', '-input=false', '-backend=false']
+    dir: 'terraform'
+
+  # Validate
+  - name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
+    id: 'terraform-validate'
+    entrypoint: 'terraform'
+    args: ['validate']
+    dir: 'terraform'
+
+  # Plan (always) or Apply (when _TERRAFORM_ACTION=apply)
+  - name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
+    id: 'terraform-plan-apply'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        cd terraform
+        if [ "$_TERRAFORM_ACTION" = "apply" ]; then
+          terraform apply -auto-approve -input=false
+        else
+          terraform plan -input=false -out=tfplan
+        fi
+    env:
+      - 'TF_VAR_project_id=$PROJECT_ID'
+      - 'TF_VAR_bucket_prefix=${PROJECT_ID}-migration'
+      - 'TF_VAR_on_prem_vpn_peer_ip=203.0.113.1'
+
+timeout: '1200s'

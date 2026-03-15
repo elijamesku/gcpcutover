@@ -1,0 +1,30 @@
+# =============================================================================
+# Cloud Build — Migration run (e.g. trigger Storage Transfer, validation)
+# =============================================================================
+# Run after infrastructure is up. Use for:
+#   - Starting a Storage Transfer job
+#   - Running validation scripts
+#   - Cutover checklist steps
+# =============================================================================
+
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
+    id: 'list-transfer-jobs'
+    entrypoint: 'gcloud'
+    args:
+      - 'transfer'
+      - 'jobs'
+      - 'list'
+      - '--format=json'
+    env:
+      - 'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'
+
+  - name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
+    id: 'list-buckets'
+    entrypoint: 'gsutil'
+    args:
+      - 'ls'
+    env:
+      - 'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'
+
+timeout: '300s'
