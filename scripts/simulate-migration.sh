@@ -12,6 +12,3 @@ gsutil cp "gs://${SOURCE}/test-data/migration-test.txt" "gs://${DEST}/test-data/
 echo "Contents of destination bucket:"
 gsutil ls "gs://${DEST}/"
 echo "Done. Check destination bucket in console or: gsutil ls gs://${DEST}/"
-echo "Done. Check destination bucket in console or: gsutil ls gs://${DEST}/"
-
-
