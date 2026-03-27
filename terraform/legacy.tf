@@ -4,7 +4,6 @@
 # The second VPC: legacy workloads (VM, file store) live here.
 # Connectivity to the migration (target) VPC is via VPC Peering + Cloud VPN
 # gateway in migration VPC (where production VPN/Interconnect will land)
-#
 # *****************************************************************************
 
 resource "google_compute_network" "legacy_vpc" {
