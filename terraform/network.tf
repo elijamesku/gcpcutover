@@ -1,8 +1,7 @@
 # ******************************************************************************
 # The foundation of the migration
 # ******************************************************************************
-# Everything lives inside the VPC (Virtual Private Cloud)
-# networking
+# Everything lives inside the VPC (Virtual Private Cloud).
 # ******************************************************************************
 
 # -----------------------------------------------------------------------------
@@ -16,7 +15,6 @@ resource "google_compute_network" "migration_vpc" {
   name                    = "migration-vpc"
   auto_create_subnetworks = false
   routing_mode            = "GLOBAL"
-
   # auto_create_subnetworks = false means WE define subnets (recommended for
   # enterprises to control IP ranges and regional placement).
   # routing_mode = GLOBAL: routes are global (default). REGIONAL is for
