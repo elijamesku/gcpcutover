@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-# =============================================================================
-# Simulate a file migration: copy from source bucket to destination bucket.
-# Run after: terraform apply
-# Usage: ./scripts/simulate-migration.sh SOURCE_BUCKET DEST_BUCKET
-# Or set from Terraform: terraform output -raw source_bucket
-# =============================================================================
+# ============================================================================
+# ============================================================================
 set -e
 SOURCE="${1:?Usage: $0 SOURCE_BUCKET DEST_BUCKET}"
 DEST="${2:?Usage: $0 SOURCE_BUCKET DEST_BUCKET}"
