@@ -7,9 +7,7 @@
 # -----------------------------------------------------------------------------
 # VPC Network
 # -----------------------------------------------------------------------------
-# The isolated network. All Compute Engine VMs, Cloud SQL (with
-# private IP), and GKE nodes will use this network. In this case, the same
-# VPC has a subnet that receives traffic from on-prem via VPN.
+# The isolated network
 # -----------------------------------------------------------------------------
 resource "google_compute_network" "migration_vpc" {
   name                    = "migration-vpc"
@@ -18,7 +16,7 @@ resource "google_compute_network" "migration_vpc" {
   # auto_create_subnetworks = false means WE define subnets (recommended for
   # enterprises to control IP ranges and regional placement).
   # routing_mode = GLOBAL: routes are global (default). REGIONAL is for
-  # legacy / specific use cases.
+  depends_on = [google_project_service.compute]
   depends_on = [google_project_service.compute]
 }
 
