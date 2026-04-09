@@ -16,6 +16,7 @@ resource "google_compute_ha_vpn_gateway" "migration_vpn_gateway" {
   name    = "migration-vpn-gateway"
   network = google_compute_network.migration_vpc.id
   region  = var.region
+  region  = var.region
 }
 
 # External VPN gateway resource — represents the on-prem side for BGP/tunnel config.
