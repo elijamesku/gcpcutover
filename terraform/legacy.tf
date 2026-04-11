@@ -74,6 +74,7 @@ resource "google_compute_firewall" "legacy_allow_internal" {
     protocol = "icmp"
   }
   source_ranges = [google_compute_subnetwork.legacy_subnet.ip_cidr_range]
+  source_ranges = [google_compute_subnetwork.legacy_subnet.ip_cidr_range]
 }
 
 # VPC Peering: legacy <-> migration (so "source" and "target" can have comms)
