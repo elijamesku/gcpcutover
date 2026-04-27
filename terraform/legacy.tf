@@ -81,6 +81,7 @@ resource "google_compute_network_peering" "legacy_to_migration" {
   name         = "legacy-to-migration"
   network      = google_compute_network.legacy_vpc.id
   peer_network = google_compute_network.migration_vpc.id
+  peer_network = google_compute_network.migration_vpc.id
 }
 
 resource "google_compute_network_peering" "migration_to_legacy" {
