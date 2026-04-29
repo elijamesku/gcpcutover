@@ -15,6 +15,7 @@ resource "google_storage_bucket_iam_member" "transfer_source" {
   bucket = google_storage_bucket.source.name
   role   = "roles/storage.objectViewer"
   member = "serviceAccount:${google_service_account.storage_transfer.email}"
+  member = "serviceAccount:${google_service_account.storage_transfer.email}"
 }
 
 resource "google_storage_bucket_iam_member" "transfer_dest" {
