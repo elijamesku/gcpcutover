@@ -11,6 +11,7 @@ resource "google_compute_network" "legacy_vpc" {
   auto_create_subnetworks  = false
   routing_mode             = "GLOBAL"
   depends_on               = [google_project_service.compute]
+  depends_on               = [google_project_service.compute1]
 }
 
 resource "google_compute_subnetwork" "legacy_subnet" {
