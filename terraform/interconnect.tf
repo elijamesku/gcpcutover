@@ -1,10 +1,6 @@
 # ******************************************************************************
 # VPN
 # ******************************************************************************
-# This file adds the migration VPC side: VPN gateway (where tunnel lands) and
-# a Partner Interconnect VLAN attachment. The tunnel/interconnect would
-# connect to the data center
-# ******************************************************************************
 
 # -----------------------------------------------------------------------------
 # Cloud VPN gateway (migration VPC)
