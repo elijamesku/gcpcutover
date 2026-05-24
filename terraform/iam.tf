@@ -1,9 +1,6 @@
 # =============================================================================
 # IAM — Least privilege for migration workloads
 # =============================================================================
-# Service accounts for transfer jobs, GKE, and Cloud SQL. In production
-# scope roles narrowly per workload.
-# =============================================================================
 
 resource "google_service_account" "storage_transfer" {
   account_id   = "storage-transfer-sa"
