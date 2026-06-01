@@ -3,7 +3,6 @@ resource "google_service_account" "storage_transfer" {
   display_name = "Storage Transfer Service Account"
 }
 
-# Allow Storage Transfer Service to use this SA to read/write buckets
 resource "google_storage_bucket_iam_member" "transfer_source" {
   bucket = google_storage_bucket.source.name
   role   = "roles/storage.objectViewer"
