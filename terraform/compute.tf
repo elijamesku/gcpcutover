@@ -1,9 +1,6 @@
 # ******************************************************************************
 # COMPUTE ENGINE - Lift-and-Shift Target
 # ******************************************************************************
-# VMs will be replicated to Google Compute Engine. This creates one small VM so 
-# we can take the migrated workload and attach the VPC and subnets.
-# ******************************************************************************
 
 resource "google_compute_instance" "migration_vm" {
   count        = var.enable_compute ? 1 : 0
