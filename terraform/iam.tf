@@ -1,4 +1,4 @@
-####
+#
 resource "google_service_account" "storage_transfer" {
   account_id   = "storage-transfer-sa"
   display_name = "Storage Transfer Service Account"
