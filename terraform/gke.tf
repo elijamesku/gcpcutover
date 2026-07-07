@@ -1,10 +1,7 @@
 # ******************************************************************************
 # GKE — Migration target for containerized / refactored workloads
 # ******************************************************************************
-# Applications will be moving from VMs to containers and run on
-# Google Kubernetes Engine inside of pods > Nodes. This cluster lives in the migration
-# VPC and uses the dedicated gke-subnet (with pod/service secondary ranges).
-# ******************************************************************************
+##
 
 resource "google_container_cluster" "migration" {
   name     = "migration-gke"
