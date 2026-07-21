@@ -1,5 +1,6 @@
-#####
 set -e
+SOURCE="${1:?Usage: $0 SOURCE_BUCKET DEST_BUCKET}"
+## x2
 SOURCE="${1:?Usage: $0 SOURCE_BUCKET DEST_BUCKET}"
 DEST="${2:?Usage: $0 SOURCE_BUCKET DEST_BUCKET}"
 echo "Simulating migration: gs://${SOURCE}/ -> gs://${DEST}/"
