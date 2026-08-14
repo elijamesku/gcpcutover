@@ -1,6 +1,4 @@
-# *****************************************************************************
-# LEGACY
-# *****************************************************************************
+#tests
 resource "google_compute_network" "legacy_vpc" {
   name                    = "legacy-vpc"
   auto_create_subnetworks  = false
